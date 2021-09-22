@@ -10,113 +10,62 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         
     </head> 
-    <body>
+    
+<?php
 
-        <main x-data="{ open : false }">
+    include_once 'header.php';
 
-            <div class="bg-black flex p-5 md:p-0 flex justify-between items-center">
-                <div class="bg-transparent cursor-pointer transform scale-150 pl-2 md:hidden">
-                    <button class="menu-bar-btn" @click="open = !open" @click.away="open = false">
-                        <svg style="color: white;" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
+?>
 
-                <div class="m-auto pl-10 md:pr-96 md:m-0 ">
-                    <img src="images/logo.svg" alt="logo image">
-                </div>
+<section">
 
-                <div class="hidden text-white md:flex pr-10 font-medium pl-7 pb-5 text-lg pt-5">
-                    <nav class="">
-                        <ul class="flex"> 
-                            <li class="pr-5 cursor-pointer">
-                                <a href="index.html"><h1>Home</h1></a>
-                            </li>
-                            <li class="pr-5 cursor-pointer">
-                                <h1>Contacts</h1>
-                            </li>
-                            <li class="pr-5 cursor-pointer">
-                                <a href="login.html"><h1>Login</h1></a>
-                            </li>
-                            <li>
-                                <a href="Signup.html"><h1>Signup</h1></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+    <div class="bg-gray-200 min-h-screen grid place-content-center">
+        <div class="bg-white rounded-md shadow-md p-8 my-20">
+
+            <div class="text-center font-bold text-2xl pb-4 ">
+                <h1>Sign Up</h1>
             </div>
 
-            <div class="bg-black absolute w-screen text-white font-medium pl-7 pb-5 text-lg md:hidden" x-show="open">
-                <nav>
-                    <ul>
-                        <li class="cursor-pointer mb-1">
-                            <a href="index.html"><h1>Home</h1></a>
-                        </li>
-                        <li class="cursor-pointer mb-1">
-                            <h1>Contacts</h1>
-                        </li>
-                        <li class="mb-1">
-                            <a href="login.html"><h1>Login</h1></a>
-                        </li>
-                        <li class="mb-1">
-                            <a href="Signup.html"><h1>Signup</h1></a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <form action="signup.inc.php" name="signup" id="form" method="post">
 
-        </main>
-
-        <section">
-
-            <div class="bg-gray-200 min-h-screen grid place-content-center">
-                <div class="bg-white rounded-md shadow-md p-8 my-20">
-
-                <div class="text-center font-bold text-2xl pb-4 ">
-                        <h1>Sign Up</h1>
-                </div>
-
-                    <form action="" name="signup" id="form" method="POST">
-
-                        <label class="font-bold block" for="first-name">Full Name:</label>
-                        <input class="border-2 border-black rounded shadow-md pl-1 mr-1 mb-1" id="first-name" onkeyup="validateform()" name="first-name" type="text" placeholder="First Name">
-                        <input class="border-2 border-black rounded shadow-md pl-1" oninput="validateform()" id="last-name" name="last-name" type="text" placeholder="Last Name">
+                <label class="font-bold block" for="first-name">Full Name:</label>
+                <input class="border-2 border-black rounded shadow-md pl-1 mr-1 mb-1" id="first-name" onkeyup="validateform()" name="first-name" type="text" placeholder="First Name">
+                <input class="border-2 border-black rounded shadow-md pl-1" oninput="validateform()" id="last-name" name="last-name" type="text" placeholder="Last Name">
                         
-                        <div class="grid grid-cols-2 h-5">
-                        <i><span id="text-firstname" class="font-medium text-xs"></span></i>
-                        <i><span id="text-lastname" class="font-medium text-xs"></span></i>
-                        </div>
+                <div class="grid grid-cols-2 h-5">
+                    <i><span id="text-firstname" class="font-medium text-xs"></span></i>
+                    <i><span id="text-lastname" class="font-medium text-xs"></span></i>
+              </div>
 
-                        <label class="font-bold block" for="address">Email:</label>
-                        <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="email" name="email" type="email" placeholder="Email">
-                        
-                        <div class="h-5"><i><span id="text-email" class="font-medium text-xs"></span></i></div>
+                <label class="font-bold block" for="address">Email:</label>
+                <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="email" name="email" type="email" placeholder="Email">
+                 
+                <div class="h-5"><i><span id="text-email" class="font-medium text-xs"></span></i></div>
 
-                        <label class="font-bold block" for="address">Password:</label>
-                        <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="password" name="password" type="password" placeholder="Password">
+                <label class="font-bold block" for="address">Password:</label>
+                <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="password" name="password" type="password" placeholder="Password">
                         
-                        <div class="h-5"><i><span id="text-password" class="font-medium text-xs"></span></i></div>
+                <div class="h-5"><i><span id="text-password" class="font-medium text-xs"></span></i></div>
                         
-                        <label class="font-bold block" for="address">Address:</label>
-                        <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="address" name="address" type="text-area " placeholder="Address">
+                <label class="font-bold block" for="address">Address:</label>
+                <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="address" name="address" type="text-area " placeholder="Address">
                         
-                        <div class="h-5"><i><span id="text-address" class="font-medium text-xs"></span></i></div>
+                <div class="h-5"><i><span id="text-address" class="font-medium text-xs"></span></i></div>
                         
                         
-                        <label class="font-bold block" for="address">Age:</label>
-                        <input class="border-2 border-black rounded mb-1 shadow-md pl-1 w-14 block" oninput="validateform()" id="age" name="age" type="number" placeholder="Age">
+                <label class="font-bold block" for="address">Age:</label>
+                <input class="border-2 border-black rounded mb-1 shadow-md pl-1 w-14 block" oninput="validateform()" id="age" name="age" type="number" placeholder="Age">
 
-                        <div class="h-5"><i><span id="text-age" class="font-medium text-xs mb-1"></span></i></div>
+                <div class="h-5"><i><span id="text-age" class="font-medium text-xs mb-1"></span></i></div>
 
-                        <label class="font-bold block" for="phone number">Phone Number:</label>
-                        <input class="border-2 border-black rounded shadow-md mb-1 pl-1 block" onkeyup="validateform()" id="phone-number" name="phone-number" type="Alpha numeric" placeholder="Phone Number">
+                <label class="font-bold block" for="phone number">Phone Number:</label>
+                <input class="border-2 border-black rounded shadow-md mb-1 pl-1 block" onkeyup="validateform()" id="phone-number" name="phonenumber" type="Alpha numeric" placeholder="Phone Number">
 
-                        <div class="h-5"> <i><span id="text-phonenumber" class="font-medium text-xs block"></span></i></div>
+                <div class="h-5"> <i><span id="text-phonenumber" class="font-medium text-xs block"></span></i></div>
                        
                         
-                        <label class="font-bold block" for="country">Country:</label>
-                        <select class="border-2 border-black rounded shadow-md pl-1 w-min mb-1 block" oninput="validateform()" id="country" name="country">
+                <label class="font-bold block" for="country">Country:</label>
+                <select class="border-2 border-black rounded shadow-md pl-1 w-min mb-1 block" oninput="validateform()" id="country" name="country">
                                     <option value="0"><h1 class="font-bold" >Select your country</h1> </option>
                                     <option value="Afghanistan">Afghanistan</option>
                                     <option value="Åland Islands">Åland Islands</option>
@@ -370,376 +319,35 @@
                         
                         <label class="font-bold" for="gender">Gender:</label>
                         <span class="ml-1"></span>
-                        <input class="my-2 mx-1" id="male-gender" name="gender" type="radio">
+                        <input class="my-2 mx-1" id="male-gender" name="gender" type="radio" value="male">
                         <label class="font-bold" for="male">Male</label>
-                        <input class="mx-1" id="female-gender" name="gender" type="radio">
-                        <label class="font-bold" for="female">Female</label>
+                        <input class="mx-1" id="female-gender" name="gender" type="radio" value="female">
+                    <label class="font-bold" for="female">Female</label>
                         
-                        <div class="bg-gray-500 text-white w-min rounded-md px-4 py-1 mt-3" id="submitdiv">
-                        <input class="bg-transparent " type="submit" id="submit">
-                        </div>
-                    
-                    </form>
-                </div>
-                
-            </div>
-
-        </section>
-
-        <footer class="bg-black pt-20 pb-10 pl-20">
-
-            <div class="px-24 md:flex justify-around"> 
-                <div class=" pb-20 w-60">
-                    <h1 class="text-2xl font-bold pb-5 text-white">Links</h1>
-                    <p class="text-gray-400">www.purecodes.com</p>
-                    <p class="text-gray-400">www.ontracx.com</p>
+                <div class="bg-gray-500 text-white w-min rounded-md px-4 py-1 mt-3" id="submitdiv">
+                    <input class="bg-transparent " type="submit" id="submit" name="submit">
                 </div>
 
-                <div class="pb-20 w-60">
-                    <h1 class="text-2xl font-bold pb-5 text-white">Socail icons</h1>
-                    <div class="flex">
-                        <img class="w-8 h-8 p-0.5 " src="images/facebook.png" alt="fb image">
-                        <img class="w-8 h-8 p-0.5" src="images/instagram.png" alt="insta image">
-                        <img class="w-8 h-8 p-0.5" src="images/twitter.png" alt="twitter image">
-                        <img class="w-8 h-8 p-0.5" src="images/linkedin.png" alt="linkedin image"> 
-                    </div>
-                </div>
-
-                <div class="w-60">
-                    <h1 class="text-2xl font-bold pb-5 text-white">Address</h1>
-                    <p class="text-gray-400">Spinzar Plaza 4rth Floor F30</p>
-                    <p class="text-gray-400">@2021 Pure Codes</p> 
-                </div>
+                <p class="mt-2 text-sm" >Have an account? <a href="login.php"> <span class="text-base font-medium"> Log in</span> </a></p>
+                    
+            </form>
+        </div>
                 
-            </div>
+    </div>
 
-        </footer>
+</section>
 
-        <script>
+<?php
 
-            var gen = true;
-            var text_color_red = "#d10d0d";
-            var text_color_green = "#0dd121";
-           
+    include_once 'javascript.php';
 
-            function validateform() {
+?>
 
-                var submit_div = document.getElementById("submitdiv");
+<?php
 
-                var submit = document.querySelector("input[type='submit']");
-                submit.disabled = true;
+    include_once 'footer.php';
 
-                var error = true;
+?>
 
-                var gender = document.querySelector("input[type='radio']")
-                
-                if (gen == true) 
-                {
-                    
-                    gender.checked=true;
-                    gen = false;
-
-                }
- 
-                var first_name = document.getElementById("first-name");
-
-                var text_firstname = document.getElementById("text-firstname");
-                   
-                if (first_name.value.length==0) {
-                    
-                    text_firstname.innerHTML = "*First name must be filled";
-                    text_firstname.style.color = text_color_red;
-
-                }
-                else if (first_name.value.length>0 && first_name.value.length<3) {
-                    
-                    first_name.style.borderColor=text_color_red;
-                    text_firstname.innerHTML = "*First name is too small";
-                    text_firstname.style.color = text_color_red;
-
-                }
-                else if(first_name.value.length>=20)
-                {
-                    first_name.style.borderColor=text_color_red;
-                    text_firstname.innerHTML = "*First name is too Long";
-                    text_firstname.style.color = text_color_red;
-                }
-                else if (first_name.value.length>=3 || first_name.value.length<20) {
-                    
-                    first_name.style.borderColor= text_color_green;
-                    text_firstname.innerHTML = "";
-
-                }
-
-                var last_name = document.getElementById("last-name");
-                var text_lastname = document.getElementById("text-lastname");
-
-                if (last_name.value.length==0) {
-                    
-                    text_lastname.innerHTML = "*Last name must be filled";
-                    text_lastname.style.color = text_color_red;
-
-                }
-                else if (last_name.value.length>0 && last_name.value.length<3) {
-                    
-                    last_name.style.borderColor= text_color_red;
-                    text_lastname.innerHTML = "*last name is too small";
-                    text_lastname.style.color = text_color_red;
-
-                }
-                else if(last_name.value.length>=20)
-                {
-                    last_name.style.borderColor= text_color_red;
-                    text_lastname.innerHTML = "*Last name is too Long";
-                    text_lastname.style.color = text_color_red;
-                }
-                else if (last_name.value.length>=3 || last_name.value.length<20) {
-                    
-                    last_name.style.borderColor= text_color_green;
-                    text_lastname.innerHTML = "";
-
-                }
-
-                var email = document.getElementById("email");
-                var text_email = document.getElementById("text-email");
-
-                if (email.value.length==0) {
-                    
-                    text_email.innerHTML = "*Email must be filled";
-                    text_email.style.color = text_color_red;
-
-                }
-                else if (email.value.length>0 && email.value.length<14) {
-                    
-                    email.style.borderColor= text_color_red;
-                    text_email.innerHTML = "*Email is too small";
-                    text_email.style.color = text_color_red;
-
-                }
-                else if(email.value.length>=30)
-                {
-                    email.style.borderColor= text_color_red;
-                    text_email.innerHTML = "*Email is too Long";
-                    text_email.style.color = text_color_red;
-                }
-                else if (email.value.length>=14 || email.value.length<30) {
-                    
-                    email.style.borderColor= text_color_green;
-                    text_email.innerHTML = "";
-
-                }
-
-                // var at_the_rate = /^[0-9@\s]*$/;
-                // var result2 = at_the_rate.test(email.value);
-
-                // if (!result2) {
-
-                //     email.style.borderColor= text_color_red;
-                //     text_email.innerHTML = "*Plx Include @ in email";
-                //     text_email.style.color = text_color_red;
-
-                // }
-
-                var password = document.getElementById("password");
-                var text_password = document.getElementById("text-password");
-
-                if (password.value.length==0) {
-                    
-                    text_password.innerHTML = "*Password must be filled";
-                    text_password.style.color = text_color_red;
-
-                }
-                else if (password.value.length>0 && password.value.length<9) {
-                    
-                    password.style.borderColor= text_color_red;
-                    text_password.innerHTML = "*Password is too small";
-                    text_password.style.color = text_color_red;
-
-                }
-                else if(password.value.length>=20)
-                {
-
-                    password.style.borderColor= text_color_red;
-                    text_password.innerHTML = "*Password is too Long";
-                    text_password.style.color = text_color_red;
-
-                }
-                else if (password.value.length>=9|| password.value.length<20) 
-                {
-                    
-                    password.style.borderColor= text_color_green;
-                    text_password.innerHTML = "";
-
-                }
-
-                
-
-                var address = document.getElementById("address");
-                var text_address = document.getElementById("text-address");
-
-                if (address.value.length==0) {
-                    
-                    address.style.borderColor="black";
-                    text_address.innerHTML = "";
-
-                }
-                else if (address.value.length>0 && address.value.length<15) {
-                    
-                    address.style.borderColor= text_color_red;
-                    text_address.innerHTML = "*Address is too small";
-                    text_address.style.color = text_color_red;
-
-                }
-                else if(address.value.length>=250)
-                {
-                    address.style.borderColor= text_color_red;
-                    text_address.innerHTML = "*Address is too Long";
-                    text_address.style.color = text_color_red;
-                }
-                else if (address.value.length>=15 || address.value.length<250) {
-                    
-                    address.style.borderColor= text_color_green;
-                    text_address.innerHTML = "";
-
-                }
-
-                var age = document.getElementById("age");
-                var text_age = document.getElementById("text-age");
-
-                if (age.value.length==0) {
-                    
-                    text_age.innerHTML = "*Age must be filled";
-                    text_age.style.color = text_color_red;
-
-                }
-                else if (age.value<=0) {
-                    
-                    age.style.borderColor= text_color_red;
-                    text_age.innerHTML = "*Age is not valid";
-                    text_age.style.color = text_color_red;
-
-                }
-                else if(age.value>=121)
-                {
-                    age.style.borderColor= text_color_red;
-                    text_age.innerHTML = "*Age is not valid";
-                    text_age.style.color = text_color_red;
-                }
-                else if (age.value>=1 || age.value<121) {
-                    
-                    age.style.borderColor= text_color_green;
-                    text_age.innerHTML = "";
-
-                }
-
-                var phone_number = document.getElementById("phone-number");
-                var text_phone_number = document.getElementById("text-phonenumber");
-
-                if (phone_number.value.length==0) {
-                    
-                    text_phone_number.innerHTML = "*Phone Number must be filled";
-                    text_phone_number.style.color = text_color_red;
-
-                }
-                else if (phone_number.value.length>0 && phone_number.value.length<11) {
-                    
-                    phone_number.style.borderColor= text_color_red;
-                    text_phone_number.innerHTML = "*Phone Number is too Small";
-                    text_phone_number.style.color = text_color_red;
-
-                }
-                else if(phone_number.value.length>=21)
-                {
-                    phone_number.style.borderColor= text_color_red;
-                    text_phone_number.innerHTML = "*Phone Number is too Large";
-                    text_phone_number.style.color = text_color_red;
-                }
-                else if (phone_number.value.length>=11 || phone_number.value.length<21) {
-                    
-                    phone_number.style.borderColor= text_color_green;
-                    text_phone_number.innerHTML = "";
-
-                }
-
-                var exp = /^[A-Za-z0-9+\s]*$/;
-                var result = exp.test(phone_number.value);
-
-                if (!result) {
-
-                    phone_number.style.borderColor= text_color_red;
-                    text_phone_number.innerHTML = "*Phone Number is not Alpha Numeric";
-                    text_phone_number.style.color = text_color_red;
-
-                }
-
-                var space = /\s/;
-                var result1 = space.test(phone_number.value);
-
-                if (result1) {
-
-                    phone_number.style.borderColor= text_color_red;
-                    text_phone_number.innerHTML = "*Remove Space";
-                    text_phone_number.style.color = text_color_red;
-
-                }
-
-                var country = document.getElementById("country");
-                var text_country = document.getElementById("text-country");
-
-                if (country.value == "0") {
-
-                    country.style.borderColor= text_color_red;
-                    text_country.innerHTML = "*Country must be filled";
-                    text_country.style.color = text_color_red;
-                
-                }
-                else
-                {
-                    country.style.borderColor= text_color_green;
-                    text_country.innerHTML = "";
-                    
-                }
-
-                if(
-                    (address.value.length==0 
-                    || (address.value.length>=15 && address.value.length<=250))
-                    && first_name.value.length <=20
-                    && first_name.value.length >=3
-                    && last_name.value.length <=20
-                    && last_name.value.length >=3
-                    && email.value.length>=14
-                    && email.value.length<=20
-                    // && result2 ==1
-                    && password.value.length>=9
-                    && password.value.length<=20
-                    && age.value >=1
-                    && age.value <=120
-                    && phone_number.value.length >=11
-                    && phone_number.value.length <=20
-                    && result1 != 1
-                    && result ==1
-                    && country.value != "0"
-                    ) 
-                    
-                    {
-                        error = false;
-                    }
-
-                if(! error) {
-                    submit.disabled = false;
-                }
-    
-                if (submit.disabled==false)
-                {
-                    submit_div.style.backgroundColor = "black";
-                    
-                } else {
-                    submit_div.style.backgroundColor = "gray";
-                }
-
-            }
-        </script>
         
-    </body>
-
-</html>
+   
