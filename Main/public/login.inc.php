@@ -8,20 +8,29 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
+        echo "$email";
+        echo "<br>";
+        echo "$password";
+    
+        
+
         require_once 'dbh.inc.php';
 
-        $query = "SELECT * FROM signup_form";
+        $query = "Select * from signup_form where email='$email' AND 
+        password = '$password'";
 
         $result = mysqli_query($conn, $query);
 
         $num = mysqli_num_rows($result);
 
-
-        echo $num;
-
-        $row = mysqli_fetch_assoc($result);
-        echo var_dump($row);
-
+        echo "<br>";
+        echo "$num";
+        
+        if($num == 1)
+        {
+            $login = true;
+            header("location: index.php");
+        }
 
     }
     else
