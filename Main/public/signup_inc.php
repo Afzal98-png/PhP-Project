@@ -14,7 +14,7 @@
         $country = $_POST['country'];
         $gender = $_POST['gender'];
 
-        require_once 'dbh.inc.php';
+        require_once 'dbh_inc.php';
 
         $query = "INSERT INTO signup_form 
         (firstname, lastname, email, password, address, age, phonenumber, country, gender) 

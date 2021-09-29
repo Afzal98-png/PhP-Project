@@ -1,3 +1,14 @@
+<?php
+
+    session_start();
+    if(isset($_SESSION['username']))
+    {
+        header("location: admin.php");
+    }
+
+
+?>
+
 <html lang="en">
     <head>
         
@@ -26,7 +37,7 @@
                     <h1>Login</h1>
                 </div>
 
-                <form action="login.inc.php" name="login" id="form" method="POST">
+                <form action="login_inc.php" name="login" id="form" method="POST">
 
                     <label class="font-bold block" for="address">Email:</label>
                     <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="email" name="email" type="email" placeholder="Email">
@@ -50,6 +61,12 @@
         </div>
 
     </section>
+
+    <?php
+
+        include_once 'javascript_login.php';
+
+    ?>
             
     <?php
 

@@ -26,7 +26,7 @@
                 <h1>Sign Up</h1>
             </div>
 
-            <form action="signup.inc.php" name="signup" id="form" method="post">
+            <form action="signup_inc.php" name="signup" id="form" method="post">
 
                 <label class="font-bold block" for="first-name">Full Name:</label>
                 <input class="border-2 border-black rounded shadow-md pl-1 mr-1 mb-1" id="first-name" onkeyup="validateform()" name="first-name" type="text" placeholder="First Name">
@@ -339,7 +339,7 @@
 
 <?php
 
-    include_once 'javascript.php';
+    include_once 'javascript_signup.php';
 
 ?>
 

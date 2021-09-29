@@ -1,6 +1,7 @@
 <script>
 
     var gen = true;
+    var country_border = true;
     var text_color_red = "#d10d0d";
     var text_color_green = "#0dd121";
            
@@ -279,15 +280,28 @@
 
                 if (country.value == "0") {
 
-                    country.style.borderColor= text_color_red;
-                    text_country.innerHTML = "*Country must be filled";
-                    text_country.style.color = text_color_red;
+                    if(country_border == true)
+                    {
+
+                        text_country.innerHTML = "*Country must be filled";
+                        text_country.style.color = text_color_red;
+                        
+
+                    }
+                    else
+                    {
+
+                        country.style.borderColor = text_color_red;
+                        text_country.style.color = text_color_red;
+
+                    }
                 
                 }
                 else
                 {
                     country.style.borderColor= text_color_green;
                     text_country.innerHTML = "";
+                    country_border = false;
                     
                 }
 

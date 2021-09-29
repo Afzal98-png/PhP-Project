@@ -1,6 +1,6 @@
-    <body class="bg-gray-200">
+   <body class="bg-gray-200">
 
-        <main x-data="{ open : false }">
+        <main x-data="{ open : false }" >
 
             <div class="bg-black flex p-5 md:p-0 flex justify-between items-center">
                 <div class="bg-transparent cursor-pointer transform scale-150 pl-2 md:hidden">
@@ -15,7 +15,7 @@
                     <img src="images/logo.svg" alt="logo image">
                 </div>
 
-                <div class="hidden text-white md:flex pr-10 font-medium pl-7 pb-5 text-lg pt-5">
+                <div class="hidden text-white md:flex pr-10 font-medium pl-7 pb-5 text-lg pt-5" x-data="{ open : false }">
                     <nav class="">
                         <ul class="flex"> 
                             <li class="pr-5 cursor-pointer">
@@ -23,17 +23,33 @@
                             </li>
                             <li class="pr-5 cursor-pointer">
                                 <h1>Contacts</h1>
+                                <div class="bg-black text-white absolute left-max  w-36 h-20 rounded-md shodow-md text-center pt-7" x-show="open">
+                                    <a class="cursor-pointer font-medium text-lg" href="logout.php"><h1>Logout</h1></a>
+                                </div>
                             </li>
-                            <li class="pr-5 cursor-pointer">
-                                <a href="login.php"><h1>Login</h1></a>
+                            <li class="pr-5 cursor-pointer text-white">
+
+                                <div @click="open = !open" @click.away="open = false">
+                                    <?php
+
+                                        echo $_SESSION['username'];
+
+                                    ?>
+                                    
+                                </div>
+                                
                             </li>
-                            <li>
-                                <a href="signup.php"><h1>Signup</h1></a>
-                            </li>
+                            
                         </ul>
                     </nav>
                 </div>
+
+                
+                
             </div>
+
+            
+
 
             <div class="bg-black absolute w-screen text-white font-medium pl-7 pb-5 text-lg md:hidden" x-show="open">
                 <nav>
@@ -53,5 +69,7 @@
                     </ul>
                 </nav>
             </div>
+
+            
 
         </main>
