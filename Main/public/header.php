@@ -1,4 +1,4 @@
-    <body class="bg-gray-200">
+    <body class="">
 
         <main x-data="{ open : false }">
 

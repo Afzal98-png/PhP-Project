@@ -14,7 +14,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Panel</title>
+        <title>Testemonials</title>
         <link rel="stylesheet" href="styles.css">
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -27,9 +27,9 @@
 
     ?>
 
-        <div class="grid grid-cols-1 md:grid-cols-6 lg:p-1 ">
+        <div class="grid grid-cols-6 p-1">
 
-            <div class=" hidden bg-gray-800 text-white rounded-lg shadow-md pt-10 m-1 md:flex md:flex-col">
+            <div class="bg-white rounded-lg shadow-md pt-10 m-1 flex flex-col">
                 
                 <div class="font-black text-lg mb-12 mt-2 self-center">
                     <h1>Computer World</h1>
@@ -51,8 +51,8 @@
                         <h1>Features</h1>
                     </div>
 
-                    <div class="px-24 lg:flex justify-around">
-                        <div class="md:flex justify-around lg:pl-2">
+                    <div class="px-24 lg:flex justify-around px-0">
+                        <div class="md:flex justify-around lg:pr-1">
                             <div class="pb-20 md:pr-10 lg:pr-20 pt-8">
                                 <img class="pb-7 pl-5 lg:" src="images/laptop2.jfif" alt="laptop image">
                                 <h1 class="text-2xl font-bold pb-5 md:pt-1 lg:pt-1 ">Laptop</h1>
@@ -62,7 +62,7 @@
                                 </p>
                             </div>
 
-                            <div class="pb-20 pt-3 lg:pr-10">
+                            <div class="pb-20 lg:pr-10 pt-3">
                                 <img class= "pb-7 pl-5" src="images/iphone.jfif" alt="phone image">
                                 <h1 class="text-2xl font-bold pb-5">Iphone</h1>
                                 <p class="text-gray-500 w-80">IPhone, a multipurpose handheld computing device combining
@@ -92,7 +92,7 @@
                         <h1>Testimenials</h1>
                     </div>
 
-                    <div class="px-24 md: lg:px-80">
+                    <div class="px-24 overflow-y-auto h-2/3 md: lg:px-80">
                         <div class="pb-20">
                             <div class="">
                                 <img  src="images/watch.jfif" alt="watch pic">

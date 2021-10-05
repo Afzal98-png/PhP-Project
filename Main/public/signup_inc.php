@@ -14,12 +14,16 @@
         $country = $_POST['country'];
         $gender = $_POST['gender'];
 
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
         require_once 'dbh_inc.php';
 
         $query = "INSERT INTO signup_form 
         (firstname, lastname, email, password, address, age, phonenumber, country, gender) 
-        values('$firstname', '$lastname', '$email', '$password', '$address', '$age', '$phonenumber', '$country', '$gender')";
-        mysqli_query($conn, $query);
+        values('$firstname', '$lastname', '$email', '$hash', '$address', '$age', '$phonenumber', '$country', '$gender')";
+        $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+        
 
         header("location: login.php");
 
