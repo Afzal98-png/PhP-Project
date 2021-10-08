@@ -29,18 +29,19 @@
 
         <div class="grid grid-cols-1 md:grid-cols-6 lg:p-1 ">
 
-            <div class=" hidden bg-gray-800 text-white rounded-lg shadow-md pt-10 m-1 md:flex md:flex-col">
+            <div class=" hidden bg-black text-white rounded-md shadow-md pt-10 m-1 md:flex md:flex-col">
                 
                 <div class="font-black text-lg mb-12 mt-2 self-center">
                     <h1>Computer World</h1>
                 </div>
 
-                <div class="font-bold pl-8">
+                <div class="font-bold pl-8 min-h-screen">
                     <a href="features.php"><h1>Features</h1></a>
                     <a href="testimonials.php"><h1>Testemonials</h1></a>
                 </div>
             
             </div>
+
 
             
 

@@ -42,10 +42,7 @@
             
             </div>
 
-            
-
             <div class="bg-gray-200 rounded-md shadow-md col-span-5 mx-1 my-1 p-12 grid">
-
 
                 <div class="grid grid-cols-2">
                     <div class="font-bold text-lg">
@@ -59,22 +56,27 @@
 
                 <div class="min-h-screen grid place-content-center">
         
-
                     <div class="bg-white text-black rounded-md shadow-md px-12 py-20 my-20">
 
                          <form action="add_features_inc.php" name="features_form" id="features_form" method="post" enctype="multipart/form-data">
 
                             <label class="font-bold" >Title</label>
-                            <input class="border-2 border-black rounded-md shadow-md px-1 block min-w-full mb-2" name="title" type="text" placeholder="Enter Title">
+                            <input class="border-2 border-black rounded-md shadow-md px-1 block min-w-full mb-1" id="title" name="title" type="text" placeholder="Enter Title" onkeyup="validateform()">
+                            
+                            <div class="h-5"><i><span id="text-title" class="font-medium text-xs"></span></i></div>
 
                             <label class="font-bold">Description</label>
-                            <textarea class="border-2 border-black rounded-md shadow-md px-1 block min-w-full mb-2" name="description" placeholder="Enter Description"></textarea>
+                            <textarea class="border-2 border-black rounded-md shadow-md px-1 block min-w-full mb-1" id="description" name="description" placeholder="Enter Description" onkeyup="validateform()"></textarea>
+
+                            <div class="h-5"><i><span id="text-description" class="font-medium text-xs"></span></i></div>
 
                             <label class="font-bold">Image</label>
-                            <input class="border-2 border-black rounded-md shadow-md px-1 py-1 block mb-2" type="file" name="faculty_image" id="faculty_image">
+                            <input class="border-2 border-black rounded-md shadow-md px-1 py-1 block mb-1" id="image" type="file" name="faculty_image" id="faculty_image" oninput="validateform()">
 
-                            <div >
-                             <button class="font-bold bg-black text-white px-2 py-1 rounded-md shadow-md" name="submit">Submit</button>
+                            <div class="h-5 mb-2"><i><span id="text-image" class="font-medium text-xs"></span></i></div>
+
+                            <div class="" id="submitdiv">
+                             <button class="font-bold bg-gray-500 text-white px-2 py-1 rounded-md shadow-md" type="submit" name="submit" id="submit_btn" >Submit</button>
                             </div>
 
                         </form>
@@ -82,9 +84,14 @@
                     </div>
                 </div>
             </div>
-
             
         </div>
+
+    <?php
+
+        include_once 'javascript_add_features.php';
+
+    ?>
 
     <?php
 

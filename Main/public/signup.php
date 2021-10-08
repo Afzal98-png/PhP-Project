@@ -35,7 +35,7 @@
                 <div class="grid grid-cols-2 h-5">
                     <i><span id="text-firstname" class="font-medium text-xs"></span></i>
                     <i><span id="text-lastname" class="font-medium text-xs"></span></i>
-              </div>
+                </div>
 
                 <label class="font-bold block" for="address">Email:</label>
                 <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="email" name="email" type="email" placeholder="Email">
@@ -51,8 +51,7 @@
                 <input class="border-2 mb-1 border-black rounded shadow-md w-full pl-1" onkeyup="validateform()" id="address" name="address" type="text-area " placeholder="Address">
                         
                 <div class="h-5"><i><span id="text-address" class="font-medium text-xs"></span></i></div>
-                        
-                        
+                                              
                 <label class="font-bold block" for="address">Age:</label>
                 <input class="border-2 border-black rounded mb-1 shadow-md pl-1 w-14 block" oninput="validateform()" id="age" name="age" type="number" placeholder="Age">
 
@@ -61,8 +60,7 @@
                 <label class="font-bold block" for="phone number">Phone Number:</label>
                 <input class="border-2 border-black rounded shadow-md mb-1 pl-1 block" onkeyup="validateform()" id="phone-number" name="phonenumber" type="Alpha numeric" placeholder="Phone Number">
 
-                <div class="h-5"> <i><span id="text-phonenumber" class="font-medium text-xs block"></span></i></div>
-                       
+                <div class="h-5"> <i><span id="text-phonenumber" class="font-medium text-xs block"></span></i></div>                    
                         
                 <label class="font-bold block" for="country">Country:</label>
                 <select class="border-2 border-black rounded shadow-md pl-1 w-min mb-1 block" oninput="validateform()" id="country" name="country">

@@ -85,21 +85,26 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                        $i=1;
                                         while($rowvalue = mysqli_fetch_assoc($result))
                                         {
+                                            
                                             ?>
 
                                             <tr class="">
-                                                <td class="border-2 border-gray-300 text-center p-1 lg:w-10 bg-white "><?php echo $rowvalue['id'] ?></td>
+                                                <td class="border-2 border-gray-300 text-center p-1 lg:w-10 bg-white "><?php echo $i ?></td>
                                                 <td class="border-2 border-gray-300 text-center p-1 lg:w-20 bg-white"><?php echo $rowvalue['title'] ?></td>
                                                 <td class="border-2 border-gray-300  p-1 lg:w-96 bg-white"><?php echo $rowvalue['description'] ?></td>
                                                 <td class="border-2 border-gray-300 text-center w-32 h-32 bg-white"><?php echo '<img class="rounded-md " src="upload/' .$rowvalue['image']. '" alt="image">' ?></td>
                                                 <td class="border-2 border-gray-300 text-center p-1 bg-white lg:w-24">
-                                                    <div class="">
+                                                    <div class="lg:grid lg:grid-cols-2 lg:pr-4">
+                                                        <form action="edit.php" method="post">
+                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" name="edit_btn" type="submit">Edit</button>
+                                                            <input type="hidden" name="edit_data" value="<?php echo $rowvalue['id']; ?>">
+                                                        </form>
                                                         <form action="delete.php" method="post">
-                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold"> <a href="edit.php">Edit</a> </button>
                                                             <input type="hidden" name="delete_btn" value="<?php echo $rowvalue['id']; ?>">
-                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" name="submit" type="submit">Delete</button>
+                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" name="delete" type="submit">Delete</button>
                                                         </form> 
                                                     </div>
                                                 
@@ -107,7 +112,8 @@
                                                 
                                             </tr> 
 
-                                            <?php        
+                                            <?php   
+                                            $i++;     
                                         }
                                     ?>
                                     

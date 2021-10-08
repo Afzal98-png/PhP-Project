@@ -1,7 +1,7 @@
 <?php
 
 
-    if(isset($_POST['submit']))
+    if(isset($_POST['delete']))
     {
         $id = $_POST['delete_btn'];
 

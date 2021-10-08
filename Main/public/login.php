@@ -6,7 +6,6 @@
         header("location: admin.php");
     }
 
-
 ?>
 
 <html lang="en">
