@@ -75,45 +75,12 @@
 
                 }
 
-            var image = document.getElementById("image");
-            var text_image = document.getElementById("text-image");
-
-                if (image.value=='') 
-                {
-                    if(i)
-                    {
-
-                        image.style.borderColor= "black";
-                        text_image.style.color = text_color_red;
-                        text_image.innerHTML = "*Image must be uploaded";
-                        i=false;
-
-                    }
-                    else
-                    {
-
-                        image.style.borderColor= "red";
-                        text_image.style.color = text_color_red;
-                        text_image.innerHTML = "*Image must be uploaded";
-
-                    }
-                }
-                else
-                {
-                    
-                    image.style.borderColor= text_color_green;
-                    text_image.innerHTML = "";
-                    image.style.borderColor= text_color_green;
-
-                }  
-
                if
                 (
                    title.value.length>=3
                    && title.value.length<=10
                    && description.value.length>=20
                    && description.value.length<=1000
-                   && image.value!=''
                 )
                {
                    error = false;

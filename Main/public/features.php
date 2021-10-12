@@ -27,9 +27,9 @@
 
     ?>
 
-        <div class="grid grid-cols-1 md:grid-cols-6 lg:p-1 ">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6">
 
-            <div class=" hidden bg-black text-white rounded-md shadow-md pt-10 m-1 md:flex md:flex-col">
+            <div class="hidden bg-black text-white rounded-md shahdow-md pt-10 m-1 md:flex md:flex-col">
                 
                 <div class="font-black text-lg mb-12 mt-2 self-center">
                     <h1>Computer World</h1>
@@ -44,7 +44,7 @@
 
             
 
-            <div class="bg-gray-200 rounded-md shadow-md col-span-5 mx-1 my-1 p-12">
+            <div class="bg-gray-200 rounded-md shahdow-md mx-1 my-1 p-12  md:col-span-3 lg:col-span-5">
 
 
                 <div class="grid grid-cols-2">
