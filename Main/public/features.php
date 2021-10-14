@@ -16,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Features</title>
         <link rel="stylesheet" href="styles.css">
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="alpine.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         
     </head> 
@@ -80,6 +80,7 @@
                                         <th class="p-2">Title</th>
                                         <th class="p-2">Description</th>
                                         <th class="p-2">Image</th>
+                                        <th class="p-2">Published</th>
                                         <th class="p-2">Action</th>
                                     </tr>
                                 </thead>
@@ -94,16 +95,36 @@
                                             <tr class="">
                                                 <td class="border-2 border-gray-300 text-center p-1 lg:w-10 bg-white "><?php echo $i ?></td>
                                                 <td class="border-2 border-gray-300 text-center p-1 lg:w-20 bg-white"><?php echo $rowvalue['title'] ?></td>
-                                                <td class="border-2 border-gray-300  p-1 lg:w-96 bg-white"><?php echo $rowvalue['description'] ?></td>
-                                                <td class="border-2 border-gray-300 text-center w-32 h-32 bg-white"><?php echo '<img class="rounded-md " src="upload/' .$rowvalue['image']. '" alt="image">' ?></td>
-                                                <td class="border-2 border-gray-300 text-center p-1 bg-white lg:w-24">
-                                                    <div class="lg:grid lg:grid-cols-2 lg:pr-4">
+                                                <td class="border-2 border-gray-300 p-1 lg:w-80 bg-white "><?php echo substr($rowvalue['description'], 0, 110) ?></td>
+                                                <div class="grid">
+                                                    <td class="border-2 border-gray-300 w-1 p-4 bg-white"> <?php echo '<img class="" src="upload/' .$rowvalue['image'].'" alt="">'?></td>
+                                                </div>
+                                                <?php
+
+                                                    if($rowvalue['has_published'])
+                                                    {
+                                                        ?>
+                                                         <td class="border-2 border-gray-300 text-center p-1 lg:w-20 bg-white">Published</td>
+                                                        <?php
+                                                    }
+                                                    else
+                                                    {
+                                                        ?>
+                                                         <td class="border-2 border-gray-300 text-center p-1 lg:w-20 bg-white">Not Published</td>
+                                                        <?php
+                                                    }
+
+                                                ?>                                                
+                                                <td class="border-2 border-gray-300 text-center p-2 bg-white lg:w-24">
+                                                    <div class="lg:grid lg:grid-cols-2 lg:pr-2 lg:pt-4">
                                                         <form action="edit.php" method="post">
                                                             <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" name="edit_btn" type="submit">Edit</button>
                                                             <input type="hidden" name="edit_data" value="<?php echo $rowvalue['id']; ?>">
                                                         </form>
                                                         <form action="delete.php" method="post">
                                                             <input type="hidden" name="delete_btn" value="<?php echo $rowvalue['id']; ?>">
+                                                            <input type="hidden" name="delete_image" value="<?php echo $rowvalue['image']; ?>">
+
                                                             <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" name="delete" type="submit">Delete</button>
                                                         </form> 
                                                     </div>

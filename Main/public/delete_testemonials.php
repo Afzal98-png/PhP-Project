@@ -8,18 +8,18 @@
 
         include_once 'dbh_inc.php';
 
-        $query = "DELETE FROM features_data WHERE id='$id'";
+        $query = "DELETE FROM t_data WHERE id='$id'";
         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
         if($result)
         {
-            unlink("upload/$image");
+            unlink("upload_img_testemonials/$image");
             echo "delete done";
-            header("location: features.php");
+            header("location: testimonials.php");
         }
         else
         {
-            header("location: features.php");
+            header("location: testimonials.php");
         }
         
     }

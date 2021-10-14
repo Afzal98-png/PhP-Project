@@ -9,14 +9,14 @@
 
         if($check == "on")
         {
-            $query = "INSERT INTO features_data
+            $query = "INSERT INTO t_data
             (title, description, image, has_published)
             values('$title', '$description', '$image' , 1)";
 
         }
         else
         {
-            $query = "INSERT INTO features_data
+            $query = "INSERT INTO t_data
             (title, description, image, has_published)
             values('$title', '$description', '$image' , 0)";
         }
@@ -29,12 +29,12 @@
 
         if($result)
         {
-            move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/". $_FILES["faculty_image"]["name"]);
-            header("location: features.php");
+            move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload_img_testemonials/". $_FILES["faculty_image"]["name"]);
+            header("location: testimonials.php");
         }
         else
         {
-            header("location: add_features.php");
+            header("location: add_testimonials.php");
         }
 
     }

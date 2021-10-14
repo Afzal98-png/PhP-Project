@@ -14,7 +14,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edit Features</title>
+        <title>Edit Testemonials</title>
         <link rel="stylesheet" href="styles.css">
         <script defer src="alpine.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="justify-self-end">
-                        <button class="bg-black text-white text-lg rounded-md shadow-md px-2 py-1 font-bold"><a href="features.php">Show All</a></button>
+                        <button class="bg-black text-white text-lg rounded-md shadow-md px-2 py-1 font-bold"><a href="testimonials.php">Show All</a></button>
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
 
                         include_once 'dbh_inc.php';
 
-                        $query = "SELECT * FROM features_data WHERE id = '$id'";
+                        $query = "SELECT * FROM t_data WHERE id = '$id'";
                         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                         $row = mysqli_num_rows($result);
                         
@@ -101,7 +101,7 @@
                                         <label class="font-bold">Image</label>
                                         <input class="border-2 border-black rounded-md shadow-md px-1 py-1 block mb-1" id="image" oninput="validateform()" value="<?php echo $rowvalue['image'] ?>" type="file" name="faculty_image" id="faculty_image">
 
-                                        <img class="w-20 h-20 mb-4" src="upload/<?php echo $rowvalue['image'] ?> "alt="current image">
+                                        <img class="w-20 h-20 mb-4" src="upload_img_testemonials/<?php echo $rowvalue['image'] ?> "alt="current image">
                                         <input type="hidden" name="previous_image" value="<?php echo $rowvalue['image'] ?>" >
 
                                         <input class="" type="checkbox" name="checkbox" <?php if($rowvalue['has_published'])
@@ -117,8 +117,6 @@
                                             <?php
 
                                         } ?>>
-                                        
-                                        
                                         <label class="text-sm font-bold pl-1">Publish</label>
                                         
                                         <div class="mt-2">
@@ -150,7 +148,6 @@
                         {
                             $check = "off";
                         }
-                        
 
                         include_once 'dbh_inc.php';
 
@@ -159,24 +156,24 @@
                                 if($check == "on")
                                 {
                                     
-                                    unlink("upload/$p_image");
+                                    unlink("upload_img_testemonials/$p_image");
                                     move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/". $_FILES["faculty_image"]["name"]);
                                     
-                                    $query = "UPDATE features_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 1,  updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
+                                    $query = "UPDATE t_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 1,  updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-                                    include 'editform.php';
+                                    include 'edit_testemonials_form.php';
                                 }
                                 else
                                 {
                                 
-                                    unlink("upload/$p_image");
+                                    unlink("upload_img_testemonials/$p_image");
                                     move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/". $_FILES["faculty_image"]["name"]);
                                     
-                                    $query = "UPDATE features_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 0,  updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
+                                    $query = "UPDATE t_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 0,  updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-                                    include 'editform.php';
+                                    include 'edit_testemonials_form.php';
                                 }
                                
                             }
@@ -185,18 +182,18 @@
                                 if($check == "on")
                                 {
                                     $image = $p_image;
-                                    $query = "UPDATE features_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 1, updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
+                                    $query = "UPDATE t_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 1, updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-                                    include 'editform.php';
+                                    include 'edit_testemonials_form.php';
                                 }
                                 else
                                 {
                                     $image = $p_image;
-                                    $query = "UPDATE features_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 0, updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
+                                    $query = "UPDATE t_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 0, updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-                                    include 'editform.php'; 
+                                    include 'edit_testemonials_form.php'; 
                                 }
                                 
                             }

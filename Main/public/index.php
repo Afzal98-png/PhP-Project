@@ -1,3 +1,13 @@
+<?php
+
+    session_start();
+    if(!(isset($_SESSION['username'])))
+    {
+        header("location: login.php");
+    }
+
+?>
+
 <html lang="en">
     <head>
         
@@ -6,7 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PHP Project</title>
         <link rel="stylesheet" href="styles.css">
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="alpine.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         
     </head> 
@@ -17,99 +27,147 @@
 
     ?>
 
-        <div>
-            <img src="images/banner.jpg" alt="banner">
+        <div class="shadow-md">
+            <img  src="images/banner.jpg" alt="banner">
         </div>
 
-        <section class="mt-28">
+        <?php
+            
+            require_once 'dbh_inc.php';
 
-            <div class="font-bold text-center text-2xl pb-24">
-                <h1>Features</h1>
-            </div>
+            $query = "SELECT * FROM features_data";
+            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+            $row = mysqli_num_rows($result);
+            
 
-            <div class="px-24 lg:flex justify-around px-0">
-                <div class="md:flex justify-around lg:pr-1">
-                    <div class="pb-20 md:pr-10 lg:pr-20 pt-8">
-                        <img class="pb-7 pl-5 lg:" src="images/laptop2.jfif" alt="laptop image">
-                        <h1 class="text-2xl font-bold pb-5 md:pt-1 lg:pt-1 ">Laptop</h1>
-                        <p class="text-gray-500 w-80 " >IPhone, a multipurpose handheld computing device combining
-                            mobile telephone, digital camera, music player, and personal
-                            computing technologies.
-                        </p>
+            if($row > 0)
+            {
+                ?>
+
+                <section class="">
+
+                    <div class="bg-white shadow-md my-2 font-bold text-center text-2xl py-12">
+                        <h1>Features</h1>
                     </div>
 
-                    <div class="pb-20 lg:pr-10 pt-3">
-                        <img class= "pb-7 pl-5" src="images/iphone.jfif" alt="phone image">
-                        <h1 class="text-2xl font-bold pb-5">Iphone</h1>
-                        <p class="text-gray-500 w-80">IPhone, a multipurpose handheld computing device combining
-                            mobile telephone, digital camera, music player, and personal
-                            computing technologies.
-                        </p>
-                    </div>
-                </div>
+                    <div class="bg-gray-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
-                <div class="md:flex justify-center">
-                    <div class="lg:"> 
-                        <img class= "pb-7 pl-5" src="images/tablet.jfif" alt="tablet image">
-                        <h1 class="text-2xl font-bold pb-5">Tablet</h1>
-                        <p class="text-gray-500 w-80">IPhone, a multipurpose handheld computing device combining
-                            mobile telephone, digital camera, music player, and personal
-                            computing technologies.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                        <?php
+                        
+                            while($resultval = mysqli_fetch_assoc($result))
+                            {
+                                if($resultval['has_published'])
+                                {
 
-        </section>
+                                    ?>
 
-        <section class="mb-28 mt-10">
+                                    <div class="bg-white rounded-md shadow-md m-0.5 p-10 grid grid-cols-1 justify-items-center">
 
-            <div class="pb-20 font-bold text-center text-2xl pb-20">
-                <h1>Testimenials</h1>
-            </div>
+                                        <div class="mb-4">
 
-            <div class="px-24 overflow-y-auto h-2/3 md: lg:px-80">
-                <div class="pb-20">
-                    <div class="">
-                        <img  src="images/watch.jfif" alt="watch pic">
-                    </div>
-                    <div class="">
-                        <h1 class="text-2xl font-bold pb-5">Watch</h1>
-                        <p class="text-gray-500">IPhone, a multipurpose handheld computing device combining
-                            mobile telephone, digital camera, music player, and personal
-                            computing technologies.
-                        </p>
-                    </div>
-                </div>
+                                            <img class="w-36 h-36 " src="upload/<?php echo $resultval['image'] ?>">     
 
-                <div class="mb-24">
-                    <div class="relative left-12 pb-5">
-                        <img src="images/mic.jfif" alt="mic pic">
-                    </div>
-                    <div class="">
-                        <h1 class="text-2xl font-bold pb-5">Mic</h1>
-                        <p class="text-gray-500">IPhone, a multipurpose handheld computing device combining
-                            mobile telephone, digital camera, music player, and personal
-                            computing technologies.
-                        </p>
-                    </div>
-                </div>
+                                        </div>
 
-                <div class="">
-                    <div class="pb-7">
-                        <img src="images/keyboard.jfif" alt="keyboard pic">
-                    </div>
-                    <div class="relative right-0.5">
-                        <h1 class="text-2xl font-bold pb-5">keyboard</h1>
-                        <p class="text-gray-500">IPhone, a multipurpose handheld computing device combining
-                            mobile telephone, digital camera, music player, and personal
-                            computing technologies.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                                        <div class="w-80">
 
-        </section>
+                                            <div class="text-2xl font-bold mb-1">
+                                                <?php echo $resultval['title'] ?>
+                                            </div>
+                                            <div class="text-gray-500">
+                                                <?php echo substr($resultval['description'], 0, 110) ?>
+                                            </div>
+    
+                                        </div>
+
+                                    </div>
+
+                                
+
+                                    <?php
+                                    
+                                }
+                                
+                            }
+                        ?>
+
+                    </div>
+
+                </section>
+
+                <?php
+
+            }
+
+
+        ?>
+
+        
+
+<?php
+            
+            require_once 'dbh_inc.php';
+
+            $query = "SELECT * FROM t_data";
+            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+            $row = mysqli_num_rows($result);
+            
+
+            if($row > 0)
+            {
+                ?>
+
+                <section class="">
+
+                    <div class="bg-white shadow-md my-2 font-bold text-center text-2xl py-12">
+                        <h1>Testemonials</h1>
+                    </div>
+
+                    <div class="bg-gray-200 grid grid-cols-1 overflow-y-auto h-80 mb-2">
+
+                        <?php
+                        
+                            while($resultval = mysqli_fetch_assoc($result))
+                            {
+                                ?>
+
+                                <div class="bg-white rounded-md shadow-md m-0.5 p-10 grid grid-cols-1 justify-items-center">
+
+                                    <div class="mb-4">
+
+                                        <img class="w-36 h-36 " src="upload/<?php echo $resultval['image'] ?>">     
+
+                                    </div>
+
+                                    <div class="w-80">
+
+                                            <div class="text-2xl font-bold mb-1">
+                                                <?php echo $resultval['title'] ?>
+                                            </div>
+                                            <div class="text-gray-500">
+                                                <?php echo substr($resultval['description'], 0, 110) ?>
+                                            </div>
+    
+                                        </div>
+
+                                </div>
+
+                                
+
+                                <?php
+                            }
+                        ?>
+
+                    </div>
+
+                </section>
+
+                <?php
+
+            }
+
+
+        ?>
 
     <?php
 

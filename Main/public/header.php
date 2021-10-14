@@ -1,4 +1,4 @@
-    <body class="">
+    <body class="bg-gray-200">
 
         <main x-data="{ open : false }">
 
@@ -24,11 +24,8 @@
                             <li class="pr-5 cursor-pointer">
                                 <h1>Contacts</h1>
                             </li>
-                            <li class="pr-5 cursor-pointer">
-                                <a href="login.php"><h1>Login</h1></a>
-                            </li>
-                            <li>
-                                <a href="signup.php"><h1>Signup</h1></a>
+                            <li class="pr-5 cursor-pointer text-white">
+                                <a href="features.php"> <?php echo $_SESSION['username'] ?> </a>                              
                             </li>
                         </ul>
                     </nav>

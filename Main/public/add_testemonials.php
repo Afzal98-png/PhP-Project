@@ -48,11 +48,11 @@
 
                 <div class="grid grid-cols-2">
                     <div class="font-bold text-lg">
-                        Add New Features
+                        Add New Testemonials
                     </div>
 
                     <div class="justify-self-end">
-                        <button class="bg-black text-white text-lg rounded-md shadow-md px-2 py-1 font-bold"><a href="features.php">Show All</a></button>
+                        <button class="bg-black text-white text-lg rounded-md shadow-md px-2 py-1 font-bold"><a href="testimonials.php">Show All</a></button>
                     </div>
                 </div>
 
@@ -60,7 +60,7 @@
         
                     <div class="bg-white text-black rounded-md shadow-md px-12 py-20 my-20">
 
-                         <form action="add_features_inc.php" name="features_form" id="features_form" method="post" enctype="multipart/form-data">
+                         <form action="add_testemonials_inc.php" name="features_form" id="features_form" method="post" enctype="multipart/form-data">
 
                             <label class="font-bold" >Title</label>
                             <input class="border-2 border-black rounded-md shadow-md px-1 block min-w-full mb-1" id="title" name="title" type="text" placeholder="Enter Title" onkeyup="validateform()">
