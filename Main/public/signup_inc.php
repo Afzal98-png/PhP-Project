@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
     if(isset($_POST["submit"]))
     {
         echo "it works";
@@ -23,10 +25,13 @@
         values('$firstname', '$lastname', '$email', '$hash', '$address', '$age', '$phonenumber', '$country', '$gender')";
         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
+        if($result)
+        {
+            $_SESSION['status'] = "Sign Up Successfully";
+            $_SESSION['status_code'] = "success";
+            header("location: login.php");
+        }
         
-
-        header("location: login.php");
-
     }
     else
     {

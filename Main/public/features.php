@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="styles.css">
         <script defer src="alpine.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <script src="alert.js"></script>
         
     </head> 
 
@@ -44,7 +46,7 @@
 
             
 
-            <div class="bg-gray-200 rounded-md shahdow-md mx-1 my-1 p-12  md:col-span-3 lg:col-span-5">
+            <div class="bg-gray-200 rounded-md shahdow-md my-1 p-12 md:col-span-3 lg:col-span-5">
 
 
                 <div class="grid grid-cols-2">
@@ -93,9 +95,11 @@
                                             ?>
 
                                             <tr class="">
-                                                <td class="border-2 border-gray-300 text-center p-1 lg:w-10 bg-white "><?php echo $i ?></td>
-                                                <td class="border-2 border-gray-300 text-center p-1 lg:w-20 bg-white"><?php echo $rowvalue['title'] ?></td>
-                                                <td class="border-2 border-gray-300 p-1 lg:w-80 bg-white "><?php echo substr($rowvalue['description'], 0, 110) ?></td>
+                                                <td class="border-2 border-gray-300 text-center p-1 w-1 bg-white "><?php echo $i ?></td>
+                                                <td class="border-2 border-gray-300 text-center p-1 w-1 bg-white"><?php echo $rowvalue['title'] ?></td>
+
+                                                <td class="border-2 border-gray-300 p-1 bg-white w-80"><?php echo substr($rowvalue['description'], 0, 110) ?></td>
+   
                                                 <div class="grid">
                                                     <td class="border-2 border-gray-300 w-1 p-4 bg-white"> <?php echo '<img class="" src="upload/' .$rowvalue['image'].'" alt="">'?></td>
                                                 </div>
@@ -178,6 +182,13 @@
 
             </div>
         </div>
+    
+    <?php
+
+    include_once 'success_popup.php';
+
+    ?>
+    
 
     <?php
 

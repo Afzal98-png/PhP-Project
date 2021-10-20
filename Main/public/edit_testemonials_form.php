@@ -21,7 +21,7 @@
 
                                         <div class="w-28 h-28 my-2">
                                             
-                                            <img class="" src="upload/<?php echo "$image" ?>" alt="edit_image">
+                                            <img class="" src="upload_img_testemonials/<?php echo "$image" ?>" alt="edit_image">
 
                                         </div>
                                         <input type="hidden" name="previous_image" value="<?php echo $image ?>" >

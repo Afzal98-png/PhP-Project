@@ -18,12 +18,14 @@
         <link rel="stylesheet" href="styles.css">
         <script defer src="alpine.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <script src="alert.js"></script>
         
     </head> 
 
     <?php
 
-        include_once 'header.php';
+        include_once 'sign_log_header.php';
 
     ?>
 
@@ -49,7 +51,7 @@
                     <div class="h-5"><i><span id="text-password" class="font-medium text-xs"></span></i></div>
                             
                     <div class="text-center bg-gray-500 w-min m-auto rounded-md px-4 py-1 text-white" id="submitdiv">
-                        <input class="bg-transparent " type="submit" id="submit" name="submit">
+                        <input class="bg-transparent cursor-pointer" type="submit" id="submit" name="submit">
                     </div>
 
                     <p class="mt-4 text-sm" >Don't have an account? <a href="signup.php"> <span class="text-base font-medium"> Sign up</span> </a></p>
@@ -60,6 +62,12 @@
         </div>
 
     </section>
+
+    <?php
+
+    include_once 'success_popup.php';
+
+    ?>
 
     <?php
 

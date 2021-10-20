@@ -13,19 +13,19 @@
         
         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-        $row = mysqli_num_rows($result);
         $rowvalue = mysqli_fetch_assoc($result);
 
-      
-        
-            // echo $rowvalue['phonenumber'];
             if(password_verify($password, $rowvalue['password']))
             {
                 $_SESSION['username'] = $rowvalue['firstname'];
-                header("location: admin.php");
+                $_SESSION['status'] = "Log In Successfully";
+                $_SESSION['status_code'] = "success";
+                header("location: features.php");
             }
             else
             {
+                $_SESSION['status'] = "Log In Error";
+                $_SESSION['status_code'] = "success";
                 header("location: login.php" );
             }
             

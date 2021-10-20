@@ -1,10 +1,13 @@
 <?php
 
+session_start();
+
     if(isset($_POST["submit"]))
     {
         $title = $_POST['title'];
         $description = $_POST['description'];
-        $image = $_FILES["faculty_image"]['name'];
+        $upload_time = time();
+        $image = $upload_time.'-'.$_FILES["faculty_image"]['name'];
         $check = $_POST['checkbox'];
 
         if($check == "on")
@@ -29,7 +32,9 @@
 
         if($result)
         {
-            move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload_img_testemonials/". $_FILES["faculty_image"]["name"]);
+            move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload_img_testemonials/".$upload_time.'-'.$_FILES["faculty_image"]["name"]);
+            $_SESSION['status'] = "Added Successfull";
+            $_SESSION['status_code'] = "success";
             header("location: testimonials.php");
         }
         else

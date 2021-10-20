@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 
     if(isset($_POST['delete']))
     {
@@ -14,7 +16,8 @@
         if($result)
         {
             unlink("upload_img_testemonials/$image");
-            echo "delete done";
+            $_SESSION['status'] = "Delete Successfull";
+            $_SESSION['status_code'] = "success";
             header("location: testimonials.php");
         }
         else

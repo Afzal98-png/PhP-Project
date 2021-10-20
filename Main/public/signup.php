@@ -13,7 +13,7 @@
     
 <?php
 
-    include_once 'header.php';
+    include_once 'sign_log_header.php';
 
 ?>
 
@@ -323,7 +323,7 @@
                     <label class="font-bold" for="female">Female</label>
                         
                 <div class="bg-gray-500 text-white w-min rounded-md px-4 py-1 mt-3" id="submitdiv">
-                    <input class="bg-transparent " type="submit" id="submit" name="submit">
+                    <input class="bg-transparent cursor-pointer" type="submit" id="submit" name="submit">
                 </div>
 
                 <p class="mt-2 text-sm" >Have an account? <a href="login.php"> <span class="text-base font-medium"> Log in</span> </a></p>

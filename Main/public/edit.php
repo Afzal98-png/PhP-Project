@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="styles.css">
         <script defer src="alpine.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <script src="alert.js"></script>
         
     </head> 
 
@@ -99,7 +101,7 @@
                                         <div class="h-5"><i><span id="text-description" class="font-medium text-xs"></span></i></div>
 
                                         <label class="font-bold">Image</label>
-                                        <input class="border-2 border-black rounded-md shadow-md px-1 py-1 block mb-1" id="image" oninput="validateform()" value="<?php echo $rowvalue['image'] ?>" type="file" name="faculty_image" id="faculty_image">
+                                        <input class="border-2 border-black rounded-md shadow-md px-1 py-1 block mb-1" id="image" oninput="validateform()" value="" type="file" name="faculty_image" id="faculty_image">
 
                                         <img class="w-20 h-20 mb-4" src="upload/<?php echo $rowvalue['image'] ?> "alt="current image">
                                         <input type="hidden" name="previous_image" value="<?php echo $rowvalue['image'] ?>" >
@@ -140,7 +142,8 @@
                         $id = $_POST['id'];
                         $title_current = $_POST['title'];
                         $description_current = $_POST['description'];
-                        $image = $_FILES["faculty_image"]['name'];
+                        $upload_time = time();
+                        $image = $upload_time.'-'.$_FILES["faculty_image"]['name'];
                         $p_image = $_POST['previous_image'];
                         if(isset($_POST['checkbox']))
                         {
@@ -154,27 +157,37 @@
 
                         include_once 'dbh_inc.php';
 
-                        if($image)
+                        if($_FILES["faculty_image"]['name'])
                             {
                                 if($check == "on")
                                 {
-                                    
                                     unlink("upload/$p_image");
-                                    move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/". $_FILES["faculty_image"]["name"]);
+                                    move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/".$upload_time.'-'.$_FILES["faculty_image"]["name"]);
                                     
                                     $query = "UPDATE features_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 1,  updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+                                    if($result)
+                                        {
+                                            $_SESSION['status'] = "Update Successfull";
+                                            $_SESSION['status_code'] = "success";
+                                        }
 
                                     include 'editform.php';
                                 }
                                 else
                                 {
-                                
                                     unlink("upload/$p_image");
-                                    move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/". $_FILES["faculty_image"]["name"]);
+                                    move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/".$upload_time.'-'.$_FILES["faculty_image"]["name"]);
                                     
                                     $query = "UPDATE features_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 0,  updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+                                    if($result)
+                                        {
+                                            $_SESSION['status'] = "Update Successfull";
+                                            $_SESSION['status_code'] = "success";
+                                        }
 
                                     include 'editform.php';
                                 }
@@ -189,12 +202,24 @@
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
                                     include 'editform.php';
+
+                                    if($result)
+                                        {
+                                            $_SESSION['status'] = "Update Successfull";
+                                            $_SESSION['status_code'] = "success";
+                                        }
                                 }
                                 else
                                 {
                                     $image = $p_image;
                                     $query = "UPDATE features_data SET title = '$title_current', description = '$description_current', image = '$image', has_published = 0, updated_at = date('Y-m-d H:i:s') WHERE id = '$id'";
                                     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+                                    if($result)
+                                        {
+                                            $_SESSION['status'] = "Update Successfull";
+                                            $_SESSION['status_code'] = "success";
+                                        }
 
                                     include 'editform.php'; 
                                 }
@@ -209,6 +234,12 @@
             </div>
                      
         </div>
+
+    <?php
+
+    include_once 'success_popup.php';
+
+    ?>
 
     <?php
 

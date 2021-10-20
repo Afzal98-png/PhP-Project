@@ -135,7 +135,7 @@
 
                                     <div class="mb-4">
 
-                                        <img class="w-36 h-36 " src="upload/<?php echo $resultval['image'] ?>">     
+                                        <img class="w-36 h-36 " src="upload_img_testemonials/<?php echo $resultval['image'] ?>">     
 
                                     </div>
 
