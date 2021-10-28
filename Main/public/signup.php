@@ -337,6 +337,18 @@
 
 <?php
 
+    include_once 'error_popup.php';
+
+?>
+
+<?php
+
+    include_once 'success_popup.php';
+
+?>
+
+<?php
+
     include_once 'javascript_signup.php';
 
 ?>

@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+    session_start();
+    include_once 'functions.php';
 
     if(isset($_POST["submit"]))
     {
@@ -8,40 +9,20 @@ session_start();
         $description = $_POST['description'];
         $upload_time = time();
         $image = $upload_time.'-'.$_FILES["faculty_image"]['name'];
-        $check = $_POST['checkbox'];
-
-        if($check == "on")
-        {
-            $query = "INSERT INTO t_data
-            (title, description, image, has_published)
-            values('$title', '$description', '$image' , 1)";
-
-        }
-        else
-        {
-            $query = "INSERT INTO t_data
-            (title, description, image, has_published)
-            values('$title', '$description', '$image' , 0)";
-        }
-
-        include_once 'dbh_inc.php';
-
+        $checkbox = $_POST['checkbox'];
+        $image_path = "testemonials_images";
+        $success_path = "testemonials.php";
+        $error_path = "add_testemonials";
         
 
-        $result= mysqli_query($conn, $query) or die(mysqli_error($conn));
-
-        if($result)
+        if($checkbox == "on")
         {
-            move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload_img_testemonials/".$upload_time.'-'.$_FILES["faculty_image"]["name"]);
-            $_SESSION['status'] = "Added Successfull";
-            $_SESSION['status_code'] = "success";
-            header("location: testimonials.php");
+            add_database("t_data", $title, $description, $image, "1", $upload_time, $image_path, $success_path, $error_path);
         }
         else
         {
-            header("location: add_testimonials.php");
+            add_database("t_data", $title, $description, $image, "1", $upload_time, $image_path, $success_path, $error_path);
         }
-
     }
     else
     {

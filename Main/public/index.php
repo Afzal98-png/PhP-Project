@@ -23,7 +23,7 @@
 
     <?php
 
-        include_once 'header.php';
+        include_once 'index_header.php';
 
     ?>
 
@@ -65,7 +65,7 @@
 
                                         <div class="mb-4">
 
-                                            <img class="w-36 h-36 " src="upload/<?php echo $resultval['image'] ?>">     
+                                            <img class="w-36 h-36 " src="features_images/<?php echo $resultval['image'] ?>">     
 
                                         </div>
 
@@ -135,7 +135,7 @@
 
                                     <div class="mb-4">
 
-                                        <img class="w-36 h-36 " src="upload_img_testemonials/<?php echo $resultval['image'] ?>">     
+                                        <img class="w-36 h-36 " src="testemonials_images/<?php echo $resultval['image'] ?>">     
 
                                     </div>
 

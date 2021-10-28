@@ -24,8 +24,8 @@
             }
             else
             {
-                $_SESSION['status'] = "Log In Error";
-                $_SESSION['status_code'] = "success";
+                $_SESSION['error'] = "Log In Error";
+                // $_SESSION['status_code'] = "success";
                 header("location: login.php" );
             }
             

@@ -37,12 +37,10 @@
 
                 <div class="font-bold pl-8 min-h-screen">
                     <a href="features.php"><h1>Features</h1></a>
-                    <a href="testimonials.php"><h1>Testemonials</h1></a>
+                    <a href="testemonials.php"><h1>Testemonials</h1></a>
                 </div>
 
             </div>
-
-
 
             <div class="bg-gray-200 rounded-md shahdow-md mx-1 my-1 p-12  md:col-span-3 lg:col-span-5">
 
@@ -86,8 +84,7 @@
 
                     </div>
                 </div>
-            </div>
-            
+            </div>            
         </div>
 
     <?php

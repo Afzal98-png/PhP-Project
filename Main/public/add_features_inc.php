@@ -1,6 +1,7 @@
 <?php
 
-session_start();
+    session_start();
+    include_once 'functions.php';
 
     if(isset($_POST["submit"]))
     {
@@ -8,40 +9,19 @@ session_start();
         $description = $_POST['description'];
         $upload_time = time();
         $image = $upload_time.'-'.$_FILES["faculty_image"]['name'];
-        $check = $_POST['checkbox'];
+        $checkbox = $_POST['checkbox'];
+        $image_path = "features_images";
+        $success_path = "features.php";
+        $error_path = "add_features.php";
 
-        if($check == "on")
+        if($checkbox == "on")
         {
-            $query = "INSERT INTO features_data
-            (title, description, image, has_published)
-            values('$title', '$description', '$image' , 1)";
-
+            add_database("features_data", $title, $description, $image, "1", $upload_time, $image_path, $success_path, $error_path);
         }
         else 
         {
-            $query = "INSERT INTO features_data
-            (title, description, image, has_published)
-            values('$title', '$description', '$image' , 0)";
+            add_database("features_data", $title, $description, $image, "0", $upload_time, $image_path, $success_path, $error_path);
         }
-
-        include_once 'dbh_inc.php';
-
-        
- 
-        $result= mysqli_query($conn, $query) or die(mysqli_error($conn));
-
-        if($result)
-        {
-            move_uploaded_file($_FILES["faculty_image"]["tmp_name"], "upload/".$upload_time.'-'.$_FILES["faculty_image"]["name"]);
-            $_SESSION['status'] = "Added Successfull";
-            $_SESSION['status_code'] = "success";
-            header("location: features.php");
-        }
-        else
-        {
-            header("location: add_features.php");
-        }
-
     }
     else
     {

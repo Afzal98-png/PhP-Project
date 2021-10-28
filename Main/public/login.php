@@ -62,6 +62,12 @@
         </div>
 
     </section>
+    
+    <?php
+
+    include_once 'error_popup.php';
+
+    ?>
 
     <?php
 

@@ -39,15 +39,12 @@
 
                 <div class="font-bold pl-8 min-h-screen">
                     <a href="features.php"><h1>Features</h1></a>
-                    <a href="testimonials.php"><h1>Testemonials</h1></a>
+                    <a href="testemonials.php"><h1>Testemonials</h1></a>
                 </div>
             
             </div>
 
-            
-
             <div class="bg-gray-200 rounded-md shahdow-md my-1 p-12 md:col-span-3 lg:col-span-5">
-
 
                 <div class="grid grid-cols-2">
                     <div class="font-bold text-lg">
@@ -55,11 +52,10 @@
                     </div>
 
                     <div class="justify-self-end">
-                        <button class="bg-black text-white text-lg rounded-md shadow-md px-2 py-1 font-bold"><a href="add_features.php">Add Features</a></button>
+                        <button class="bg-black text-white text-lg rounded-md shadow-md px-2 py-1 font-bold">
+                            <a href="add_features.php">Add Features</a></button>
                     </div>
                 </div>
-
-                
 
                 <div>
 
@@ -70,7 +66,6 @@
                         $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
                         $row = mysqli_num_rows($result);
                         
-
                         if($row > 0)
                         {
                             ?>
@@ -95,13 +90,15 @@
                                             ?>
 
                                             <tr class="">
-                                                <td class="border-2 border-gray-300 text-center p-1 w-1 bg-white "><?php echo $i ?></td>
-                                                <td class="border-2 border-gray-300 text-center p-1 w-1 bg-white"><?php echo $rowvalue['title'] ?></td>
-
-                                                <td class="border-2 border-gray-300 p-1 bg-white w-80"><?php echo substr($rowvalue['description'], 0, 110) ?></td>
-   
+                                                <td class="border-2 border-gray-300 text-center p-1 w-1 bg-white ">
+                                                    <?php echo $i ?></td>
+                                                <td class="border-2 border-gray-300 text-center p-1 w-1 bg-white">
+                                                    <?php echo $rowvalue['title'] ?></td>
+                                                <td class="border-2 border-gray-300 p-1 bg-white w-80">
+                                                    <?php echo substr($rowvalue['description'], 0, 110) ?></td>
                                                 <div class="grid">
-                                                    <td class="border-2 border-gray-300 w-1 p-4 bg-white"> <?php echo '<img class="" src="upload/' .$rowvalue['image'].'" alt="">'?></td>
+                                                    <td class="border-2 border-gray-300 w-1 p-4 bg-white"> 
+                                                    <?php echo '<img class="" src="features_images/' .$rowvalue['image'].'" alt="">'?></td>
                                                 </div>
                                                 <?php
 
@@ -114,22 +111,25 @@
                                                     else
                                                     {
                                                         ?>
-                                                         <td class="border-2 border-gray-300 text-center p-1 lg:w-20 bg-white">Not Published</td>
+                                                         <td class="border-2 border-gray-300 text-center p-1 lg:w-20 bg-white">
+                                                             Not Published</td>
                                                         <?php
                                                     }
 
                                                 ?>                                                
                                                 <td class="border-2 border-gray-300 text-center p-2 bg-white lg:w-24">
                                                     <div class="lg:grid lg:grid-cols-2 lg:pr-2 lg:pt-4">
-                                                        <form action="edit.php" method="post">
-                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" name="edit_btn" type="submit">Edit</button>
+                                                        <form action="edit_features.php" method="post">
+                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" 
+                                                            name="edit_btn" type="submit">Edit</button>
                                                             <input type="hidden" name="edit_data" value="<?php echo $rowvalue['id']; ?>">
                                                         </form>
-                                                        <form action="delete.php" method="post">
+                                                        <form action="delete_features.php" method="post">
                                                             <input type="hidden" name="delete_btn" value="<?php echo $rowvalue['id']; ?>">
                                                             <input type="hidden" name="delete_image" value="<?php echo $rowvalue['image']; ?>">
 
-                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" name="delete" type="submit">Delete</button>
+                                                            <button class="bg-black text-white rounded-md shadow-md px-2 py-2 font-bold" 
+                                                            name="delete" type="submit">Delete</button>
                                                         </form> 
                                                     </div>
                                                 
@@ -170,25 +170,15 @@
 
                         }
 
-                            ?>
-                        
-                    
-                   
+                            ?> 
                 </div>
-                
-
-               
-                
-
             </div>
         </div>
-    
     <?php
 
     include_once 'success_popup.php';
 
     ?>
-    
 
     <?php
 
